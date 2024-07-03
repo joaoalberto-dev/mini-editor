@@ -1,5 +1,14 @@
+import { AppContainer } from "@/ui/app-container";
+import { Player } from "@/features/player/ui/player";
+import { Timeline } from "@/features/timeline/ui/timeline";
+
 function App() {
-  return <h1 className="text-3xl font-bold underline">Mini editor</h1>;
+  return (
+    <AppContainer>
+      <Player />
+      <Timeline />
+    </AppContainer>
+  );
 }
 
 export default App;

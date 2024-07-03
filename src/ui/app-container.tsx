@@ -5,7 +5,7 @@ type AppContainerProps = {
 };
 
 function AppContainer({ children }: AppContainerProps) {
-  return <div className="w-screen min-h-screen bg-neutral-100">{children}</div>;
+  return <div className="flex flex-col w-screen min-h-screen bg-neutral-100">{children}</div>;
 }
 
 export { AppContainer };
