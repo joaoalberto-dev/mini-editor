@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type VideoSettings = {
+export type VideoSettings = {
   width: number;
   height: number;
   aspect: number;
@@ -9,6 +9,7 @@ type VideoSettings = {
 
 type VideoStore = {
   video: File | null;
+  videoSource: string | null;
   settings: VideoSettings | null;
   setVideo: (video: File) => void;
   clearVideo: () => void;
@@ -17,13 +18,16 @@ type VideoStore = {
 
 const useVideoStore = create<VideoStore>((set) => ({
   video: null,
+  videoSource: null,
   settings: null,
   setVideo: (video: File) => {
     if (video instanceof File === false) {
       throw new Error("Param 'video' is not a valid File");
     }
 
-    return set({ video });
+    const videoSource = URL.createObjectURL(video);
+
+    return set({ video, videoSource });
   },
   clearVideo: () => set({ video: null, settings: null }),
   setSettings: (settings: VideoStore["settings"]) => set({ settings }),
