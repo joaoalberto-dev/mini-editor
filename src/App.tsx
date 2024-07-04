@@ -2,14 +2,19 @@ import { AppContainer } from "@/ui/app-container";
 import { Player } from "@/features/player/ui/player";
 import { Timeline } from "@/features/timeline/ui/timeline";
 import { Upload } from "@/features/upload/ui/upload";
-import { useVideoStore } from "./state/video/video";
+import { useVideoStore } from "@/state/video/video";
+import { Playback } from "@/features/playback/ui/playback";
+import { PlaybackControls } from "@/features/playback-controls/ui/playback-controls";
 
 function App() {
-  const { video } = useVideoStore();
+  const { videoSource } = useVideoStore();
 
   return (
     <AppContainer>
-      <Player>{video ? null : <Upload />}</Player>
+      <Player>
+        {videoSource ? <Playback src={videoSource} /> : <Upload />}
+      </Player>
+      <PlaybackControls />
       <Timeline />
     </AppContainer>
   );
