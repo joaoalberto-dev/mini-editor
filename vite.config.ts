@@ -12,6 +12,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "@state/editor": path.resolve("./src/state/editor"),
     },
   },
   server: {

@@ -19,7 +19,8 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@state/editor/*": ["./src/state/editor/*"]
     },
     "types": ["@testing-library/jest-dom"]
   },
