@@ -1,8 +1,8 @@
 import type { WithChildren } from "@/types/with-children";
 
-type PlayerProps = WithChildren;
+type PlaybackSectionProps = WithChildren;
 
-function Player({ children }: PlayerProps) {
+function PlaybackSection({ children }: PlaybackSectionProps) {
   return (
     <div className="h-[600px] flex items-center justify-center relative">
       {children}
@@ -10,4 +10,4 @@ function Player({ children }: PlayerProps) {
   );
 }
 
-export { Player };
+export { PlaybackSection };

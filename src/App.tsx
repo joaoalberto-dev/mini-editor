@@ -1,15 +1,13 @@
 import { AppContainer } from "@/ui/app-container";
-import { Player } from "@/features/player/ui/player";
 import { Upload } from "@/features/upload/ui/upload";
+import { PlaybackSection } from "./ui/playback/playback-section";
 
 function App() {
-
-
   return (
     <AppContainer>
-      <Player>
+      <PlaybackSection>
         <Upload />
-      </Player>
+      </PlaybackSection>
     </AppContainer>
   );
 }
