@@ -8,7 +8,7 @@ function PlaybackControls() {
   const { playing, play, pause, canPlay } = usePlaybackStatus();
 
   return (
-    <div className="flex items-center justify-center py-4 border-b">
+    <div className="flex items-center justify-center py-4">
       {playing ? (
         <button
           type="button"
