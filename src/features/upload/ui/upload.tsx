@@ -6,12 +6,12 @@ function Upload() {
   const { setVideo } = useVideoStore();
 
   return (
-    <div className="flex flex-col items-center justify-center aspect-square w-[300px] rounded-xl relative">
+    <div className="absolute inset-0 flex flex-col items-center justify-center border-b border-neutral-50 dark:border-neutral-700">
       <label
         htmlFor="video-input"
-        className="flex flex-col items-center justify-center text-center"
+        className="flex flex-col items-center justify-center gap-2 text-center"
       >
-        <IconMovie className="w-4 h-4" />
+        <IconMovie className="w-8 h-8" />
         <p>
           Click or drag a<br /> file to start
         </p>
