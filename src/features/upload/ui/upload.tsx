@@ -1,10 +1,7 @@
 import { IconMovie } from "@tabler/icons-react";
-import { useVideoStore } from "@/state/video/video";
-import { handleInputChange } from "../data/handle-input-change";
+import { setVideoFile } from "@state/editor/actions";
 
 function Upload() {
-  const { setVideo } = useVideoStore();
-
   return (
     <div className="absolute inset-0 flex flex-col items-center justify-center border-b border-neutral-50 dark:border-neutral-700">
       <label
@@ -21,7 +18,7 @@ function Upload() {
         id="video-input"
         type="file"
         className="absolute inset-0 opacity-0"
-        onChange={handleInputChange(setVideo)}
+        onChange={setVideoFile}
       />
     </div>
   );
