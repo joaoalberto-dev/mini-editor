@@ -1,7 +1,10 @@
 import { IconMovie } from "@tabler/icons-react";
-import { setVideoFile } from "@state/editor/actions";
+import { pipe } from "rambda";
+import { setVideoFile, setVideoUrl } from "@state/editor/actions";
 
 function Upload() {
+  const onChange = pipe(setVideoFile, setVideoUrl);
+
   return (
     <div className="absolute inset-0 flex flex-col items-center justify-center border-b border-neutral-50 dark:border-neutral-700">
       <label
@@ -18,7 +21,7 @@ function Upload() {
         id="video-input"
         type="file"
         className="absolute inset-0 opacity-0"
-        onChange={setVideoFile}
+        onChange={onChange}
       />
     </div>
   );

@@ -1,32 +1,21 @@
+import { useEditorState } from "@/state/editor";
 import { useRef } from "react";
-import { usePlaybackStatus } from "@/state/playback-status/playback-status";
-import { useVideoStore } from "@/state/video/video";
-import { handleLoadedMetadata } from "../data/handle-loaded-metadata";
-import { useControlVideoElement } from "../hooks/use-control-video-element";
 
-type PlaybackProps = {
-  src: string;
-};
-
-function Playback({ src }: PlaybackProps) {
+function Playback() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const { setSettings } = useVideoStore();
-  const { playing, enablePlayback } = usePlaybackStatus();
+  const { videoUrl } = useEditorState();
 
-  useControlVideoElement(playing, videoRef.current);
+  if (!videoUrl) return null;
 
   return (
-    <div className="flex h-full p-12">
+    <div className="absolute inset-0 flex flex-col items-center justify-center h-full p-12 border-b border-neutral-50 dark:border-neutral-700">
       <video
         ref={videoRef}
         className="flex-1"
-        src={src}
+        src={videoUrl}
         playsInline
         muted
-        onLoadedMetadata={() =>
-          handleLoadedMetadata(setSettings, videoRef.current)
-        }
-        onCanPlayThrough={enablePlayback}
+        autoPlay
       />
     </div>
   );
