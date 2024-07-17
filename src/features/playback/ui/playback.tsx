@@ -1,3 +1,4 @@
+import { PlaybackControls } from "@/features/playback-controls/ui/playback-controls";
 import { useEditorState } from "@/state/editor";
 import { useRef } from "react";
 
@@ -15,8 +16,8 @@ function Playback() {
         src={videoUrl}
         playsInline
         muted
-        autoPlay
       />
+      <PlaybackControls video={videoRef} />
     </div>
   );
 }
