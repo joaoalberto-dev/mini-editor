@@ -1,34 +1,38 @@
-import { usePlaybackStatus } from "@/state/playback-status/playback-status";
+import type { RefObject } from "react";
+
 import {
   IconPlayerPauseFilled,
   IconPlayerPlayFilled,
 } from "@tabler/icons-react";
+import { useEditorState } from "@/state/editor";
+import { toggleVideoPlaying } from "@/state/editor/actions/toggle-video-playing";
 
-function PlaybackControls() {
-  const { playing, play, pause, canPlay } = usePlaybackStatus();
+type PlaybackControlsProps = {
+  video: RefObject<HTMLVideoElement>;
+};
+
+function PlaybackControls({ video }: PlaybackControlsProps) {
+  const { playing, videoUrl } = useEditorState();
+
+  function handleControl() {
+    if (playing) {
+      video.current?.pause();
+    } else {
+      video.current?.play();
+    }
+
+    toggleVideoPlaying();
+  }
 
   return (
-    <div className="flex items-center justify-center py-4">
-      {playing ? (
-        <button
-          type="button"
-          onClick={pause}
-          disabled={!canPlay}
-          className="disabled:opacity-30 disabled:cursor-not-allowed"
-        >
-          <IconPlayerPauseFilled />
-        </button>
-      ) : (
-        <button
-          type="button"
-          onClick={play}
-          disabled={!canPlay}
-          className="disabled:opacity-30 disabled:cursor-not-allowed"
-        >
-          <IconPlayerPlayFilled />
-        </button>
-      )}
-    </div>
+    <button
+      type="button"
+      onClick={handleControl}
+      disabled={!videoUrl}
+      className="absolute bottom-0 left-0 flex items-center justify-center p-4 m-4 rounded-full bg-[rgba(255,255,255,.1)] disabled:opacity-30 disabled:cursor-not-allowed"
+    >
+      {!playing ? <IconPlayerPlayFilled /> : <IconPlayerPauseFilled />}
+    </button>
   );
 }
 
