@@ -12,7 +12,7 @@ function Playback() {
     <div className="absolute inset-0 flex flex-col items-center justify-center h-full p-12 border-b border-neutral-50 dark:border-neutral-700">
       <video
         ref={videoRef}
-        className="flex-1"
+        className="flex-1 max-h-full"
         src={videoUrl}
         playsInline
         muted
