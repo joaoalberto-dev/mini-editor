@@ -4,13 +4,13 @@ import type { VideoFile } from "@state/editor/types";
 type EditorState = {
   videoFile: VideoFile;
   videoUrl: string | null;
-  playing: boolean;
+  playing: boolean | null;
 };
 
 const editorState = proxy<EditorState>({
   videoFile: null,
   videoUrl: null,
-  playing: false,
+  playing: null,
 });
 
 const useEditorState = () => useSnapshot(editorState);
