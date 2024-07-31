@@ -5,12 +5,14 @@ type EditorState = {
   videoFile: VideoFile;
   videoUrl: string | null;
   playing: boolean | null;
+  time: number;
 };
 
 const editorState = proxy<EditorState>({
   videoFile: null,
   videoUrl: null,
   playing: null,
+  time: 0,
 });
 
 const useEditorState = () => useSnapshot(editorState);

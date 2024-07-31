@@ -1,10 +1,15 @@
 import { PlaybackControls } from "@/features/playback-controls/ui/playback-controls";
 import { useEditorState } from "@/state/editor";
-import { useEffect, useRef } from "react";
+import { setCurrentTime } from "@/state/editor/actions/set-current-time";
+import { type SyntheticEvent, useEffect, useRef } from "react";
 
 function Playback() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { videoUrl, playing } = useEditorState();
+
+  function handleTimeUpdate(event: SyntheticEvent<HTMLVideoElement, Event>) {
+    setCurrentTime((event.target as HTMLVideoElement).currentTime);
+  }
 
   useEffect(() => {
     if (videoRef.current) {
@@ -22,7 +27,9 @@ function Playback() {
         ref={videoRef}
         className="flex-1 max-h-full"
         src={videoUrl}
+        onTimeUpdate={handleTimeUpdate}
         playsInline
+        controls
         muted
       />
       <PlaybackControls />
