@@ -29,7 +29,6 @@ function Playback() {
         src={videoUrl}
         onTimeUpdate={handleTimeUpdate}
         playsInline
-        controls
         muted
       />
       <PlaybackControls />
